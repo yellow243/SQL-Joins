@@ -1,7 +1,7 @@
 
 /* joins: select all the computers from the products table:
 using the products table and the categories table, return the product name and the category name */
-/*ALIAS*/
+
  SELECT P.Name as ProductName, C.Name as Category
  FROM products as P
  INNER JOIN categories as C 
@@ -50,3 +50,8 @@ This query should return:
 -  the employee's first and last name
 -  the name of each product
 -  and how many of that product they sold */
+SELECT e.EmployeeID, e.FirstName, e.LastName, p.Name, SUM(s.Quantity) as TotalSold
+From Sales as s
+INNER JOIN employees as e on e.EmployeeID = s.EmployeeID
+INNER JOIN products as p on p.ProductID = s.ProductID
+group by e.EmployeeID, p.ProductID;
